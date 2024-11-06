@@ -25,29 +25,58 @@
                 <script>
                     document.title = "JavaScript Basic -- In class practice -- Yilian Zhang";
                     // use document.write to display a message
-                    
+                    document.write("<p>Hi, Great. I am here</p>");
                     // use console.log to display a message   
-                  
+                    console.log("This is for debugging");
                     
                 </script>
             </p>
             <p> Please import external file hello.js here. 
-                
+                <script src="js/hello.js"></script>
             </p>
         </div>
 
         <div class="practice">
             <h1> Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
+            <script>
+                // var a = "5.6"
+                // var b = 5.7;
+                // comsole.log(typeof A)
+                var a =parseInt("10");
+                var b = 3;
+                var c = a + b;
+                var d = a % b
+                var e = b % d;
+                console.log(typeof a)
 
+                document.write("<p> a + b ="+c+"</p>");
+                document.write("<p> a % b ="+d+"</p>");
+                document.write("<p> b % d ="+e+"</p>");
+                const message = "great";
+                let greeting = "HI";
+                if (true){
+                    let greeting = "Ok";
+                }
+                console.log(greeting);
+            </script>
 
         </div>
 
         <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
-            <p> Write an image to the page </p>
+            <p> Write an image to the page 
+                <script>
+                    document.write("<img src=\"img/die1.png\">");
+                </script>
 
-            <p> Write a table to the page </p>
+            </p>
+
+            <p> Write a table to the page 
+                <script>
+                    // document.write("<table border=\"1\"> </tr></table>")
+                </script>
+            </p>
 
         </div>
 
@@ -55,7 +84,10 @@
             <h1>Window and Document Object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-
+               // window.alert("pop up alert windows");
+               // alert("another alert");
+               // window.location.assign("https://www.google.com");
+               console.log(document.location);
             </script>
 
         </div>
@@ -74,8 +106,22 @@
             <p id="p1"> Paragraph Number One </p>
             <p id="p2"> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
-            <p>Please write JavaScript code to change the content of each paragraph.​
-            <p>
+            <p>Please write JavaScript code to change the content of each paragraph.​</p>
+            <script>
+              // change the first paragraph
+              const p0ne = document.getElementById("p1")
+              p0ne.innerHTML = "<b> Bold elements</b>"; 
+              //const pTwo = document.getElementById("p2")
+              //pTwo.textContent = "I changed again";
+              const pThree= document.getElementById("p3")
+              pThree.innerHTML = "I changed once again";
+
+              // other getElements
+              //const pTwo = document.getElementsByTagName[0];
+              //console.log(pTwo);
+
+
+            </script>
 
 
         </div>
@@ -85,8 +131,19 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
+                     // get the value from the form and add them up
+                     const input1 = document.getElementsByName('num1')[0];
+                     console.log("get the first input "+ input1.value);
+                     const input2 = document.getElementsByName('num2')[0];
+                     console.log("get the second input "+ input2.value);
 
-
+                     var a = parseFloat(input1.value);
+                     var b = parseFloat(input2.value);  // finish this //parseFloat(input2.value);
+                     var c = a + b;
+                     //console.log(c.value);
+                     const resultL = document.getElementById("result");
+                     resultL.textContent = " " + c;
+                     
                 }
             </script>
             <p> <input type="text" name="num1" /> + <input type="text" name="num2">
@@ -105,7 +162,7 @@
                     </label>
                 </p>
 
-                <p id="message">
+                <p id="checkmessage">
 
                 </p>
 
@@ -115,14 +172,42 @@
                     </label>
                 </p>
             </form>
+            <script>
+                // Event handler
+                function welcome(){
+                     //alert("Thank you! ");
+                     const namebox = document.getElementById('cName');
+                     var newmessage = "Welcome" + namebox.value+", you are a new customer"
+                     //put the message back
+                     document.getElementById('checkmessage').textContent = newmessage;
+                }
+                // Binding --- register the event
+                const nameE = document.getElementById('cName');
+                nameE.addEventListener('blur', welcome);
 
+            </script>
         </div>
 
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
-            <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <input type="text" id="squarenum" placeholder="Type in a number"> <sup> 2 </sup> =
+            <label id="squareresult"> ? </label>
+            <script>
+                function dosquare(){
+                   // get the number
+                   const squareE = document.getElementById("squarenum");
+                   var number = parseInt(squareE.value);
+                   console.log("The square number is " + number);
+                   // do square
+                   var newnum = number * number;
+                   //put it back to the page
+                   document.getElementById("squareresult").textContent = " " + newnum;
+                }
+
+                const squareE = document.getElementById("squarenum");
+                squareE.addEventListener('blur', dosquare);
+            </script>
 
         </div>
 
@@ -136,8 +221,20 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="htmlcode"> 
             </div>
+             <script>
+                 function convertHTML(){
+                     const codeE = document.getElementById('code');
+                     const htmlcodeE = document.getElementById('htmlcode');
+                     console.log(codeE.value);
+                     htmlcodeE.innerHTML = codeE.value;
+                     
+                 }
+
+                 document.getElementById('tryit').addEventListener('click', convertHTML);
+             </script>
+            
 
 
         </div>
@@ -161,8 +258,45 @@
             </p>
 
             <script type="text/javascript">
+                //get elements
+                var year = document.getElementById('year');
+                //console.log(year);
+                var condition = document.getElementById('condition');
+                // add events
+               // year.addEventListener('change', getprice, false);
+                // condition.addEventListener('change', getprice, false);
+
+                //event handlers
+                function getprice() {
+                var year = document.getElementById('year');
+                var condition = document.getElementById('condition');
+                  console.log(year.value);
+                  console.log(year.selectedIndex);
+                  if (year.value == "2003" && condition.value == "Fair"){
+                    price = 2000;
+                  } else if (year.value == "2003" && condition.value == "Good"){
+                    price = 3000;
+                } else if (year.value == "2004" && condition.value == "Fair"){
+                    price = 2200;
+                } else {
+                    price = 4000;
+                  }
+                //the other way
+                if (year.selectedIndex == 0 ){
+                    if (condition.selectedIndex == 0){
+                        price = 2000;
+                    }else{
+                        price = 3000;
+                    }
+                }
 
 
+                // finish the if statement
+                document.getElementById("price").innerHTML="The price is <b> " + price + "</b>";
+                }
+                // add events
+                document.getElementById('year').addEventListener('change', getprice, false);
+                condition.addEventListener('change', getprice, false);
 
             </script>
 
@@ -173,7 +307,33 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+            <script>
+                // get element and add event listener
+                var theme = document.getElementById('theme');
+                theme.addEventListener('blur', gettheme,false);
+                // action
+                function gettheme(){
+                    var themevalue = document.getElementById('theme').value;
+                    switch (themevalue) {
+                        case "warm":
+                            document.body.style.backgroundColor = "yellow";
+                            break;
+                        case "cool":
+                            document.body.style.backgroundColor = "gray";
+                            break;
+                        case "cold":
+                            document.body.style.backgroundColor = "blue";
+                            break;
+                        case "hot": 
+                             document.body.style.backgroundColor = "red";
+                             break;
+                        default:
+                            alert("please enter a valid theme");
+                    }
 
+                }
+        
+            </script>
         </div>
 
 
@@ -197,12 +357,38 @@
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input type="button" id="premium" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="premiumresult">
 
             </p>
+            <script>
+               function getpremium(){
+                 var base = 10;
+                 var coverage = document.querySelector('input[name="coverage"]:checked').value;
+                 var ageindex = document.querySelector('#agegroup').selectedIndex;
+                 console.log("The coverage is "+ coverage+ " age " + ageindex);
+               }
+               //get the element
+               var agefactor = 0;
+               switch(ageindex){
+                  case 0: agefactor = 0.08; break;
+                  case 1: agefactor = 0.09; break;
+                  case 2: agefactor = 0.11; break;
+                  case 3: agefactor = 0.17; break;
+                  // complete it
+                  default: break;
+               }
 
+               // calculation
+               var premium = base + parseFloat(coverage)/1000*agefactor;
+               // display in paragraph # result ---using querySelector
+            
+               var bE = document.querySelector('input[value="Check Premium"]');
+               bE.addEventListener('click', getpremium, false);
+            
+
+            </script>
         </div>
 
 
@@ -215,7 +401,16 @@
             <p>
                 <input type="button" value="Click for Square">
             </p>
+            <script>
+                for (let index = 0; i < 6; i++){
+                    var square = i * i;
+                    outlist += "<li>" + i +"^2 = "+square +"</li>";
+                    //alert(square);
+                }
+                outlist +="</ul>"
 
+                document.getElementById('squarelist').innterHTML = outlist;
+            </script>
         </div>
 
 
@@ -252,6 +447,14 @@
             <p> A simple JavaScript Quiz </p>
             <p>Target: Generate a simple substract and add problems using JavaScript and then check the answers</p>
             <a href="quiz1.html">Do your practice in quiz1.html</a>
+            <script>
+                //try Math.random
+                for (let i = 0; i<4;i++){
+                    var num = Math.floor(Math.random()*6)+1;
+                    alert(num);
+                }
+
+            </script>
         </div>
 
         <div class="practice">
